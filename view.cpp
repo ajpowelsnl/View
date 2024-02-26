@@ -62,7 +62,7 @@ int main(int argc, char** argv) {
 
   double useconds = timer.seconds()/1000000;
 
-  printf(" Deep copying data from CPU to GPU: %d us\n", useconds); 
+  std::cout << " Deep copying data from CPU to GPU:  " << useconds << std::endl; 
    
 
     // Fence so you deallocation does not happen after finalize 
