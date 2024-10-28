@@ -44,11 +44,15 @@ int main(int argc, char** argv) {
     }
 
 
+    
+    std::cout << "LOGAN, Check values in a view:  " << std::endl;
     // Initialize h_matrixView on host
     for (int i = 0; i < numRows; i++) {
 			for(int j = 0; j < numCols; j++){
 					h_matrixView(i,j) = i * numCols + (j + numRows);
+	  // Next two lines are functionally equivalent
           //std::cout << h_matrixView(i,j) << " " << std::endl;
+          std::cout << h_matrixView.access(i,j) << " " << std::endl;
           }
        }
 
@@ -63,7 +67,9 @@ int main(int argc, char** argv) {
   double useconds = timer.seconds()/1000000;
 
   std::cout << " Deep copying data from CPU to GPU:  " << useconds << std::endl; 
-   
+
+
+
 
     // Fence so you deallocation does not happen after finalize 
     Kokkos::fence();
